@@ -1,0 +1,49 @@
+-how to install claude code on terminal
+- verify the installation
+authenticate it with your anthropic account
+
+
+Prerequisites:
+1)active anthropic account
+2)  git installed for windows users - claude code uses git bash internally.
+
+1)Git for windows  search ---download the installer --once complete git bash is available===
+
+first open windows powershell in your system. either powrhell or cmd for our setup 
+Claude code is installed through npm . You need Node.js and npm available in your machine
+
+c:windows/system32> winget install OpenJS.NodeJS
+This installs the latest NodeJS version.
+check node.js and npm installed correctly
+c:\windows\system32> node -v
+
+C:\windows\system32> npm install -g @anthropic-ai/claude-code
+This installs claude code globally so you can use claude code from anywhere in the terminal
+
+once installation finishes, you can launch claude code from the terminal.
+Claude code is designed to work directly in the terminal and help with the designing tasks.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
