@@ -4,3 +4,6 @@
 now lets write our first program.
 
 > Write a Python program that takes a students name and score as input and tells them if they passed or failed. Pass marks is 50.
+it creates a program and it even saves the file if you ask for it
+so claude code is not just a chtbot, it also interact with your file system and create real files.
+One of the powerful features of claude code is its ability to explain the code in plain english.
