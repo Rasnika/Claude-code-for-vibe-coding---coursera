@@ -8,3 +8,35 @@ The -- separates Claude's own flags from the command it should run (npx ...).
 Quote the DB path because it contains a space (Claude Code).
 If you actually meant the standard package, it's usually @executeautomation/database-server (as shown). Make sure Node.js/npx is installed and on PATH.
 If sqlite/the DB file doesn't exist yet at C:\Claude Code\test.db, create the folder/file first or point it at an existing .db.
+
+
+
+
+1. Add the SQLite MCP server
+claude mcp add sqlite --scope user -- npx -y @executeautomation/database-server "C:/Claude Code/test.db"
+Registers an MCP server named sqlite with Claude.
+--scope user → saved in your user-level config (%USERPROFILE%\.claude.json), so it’s available in every project, not just this folder.
+The -- separates Claude’s flags from the command Claude will actually run when it starts the server.
+npx -y @executeautomation/database-server "C:/Claude Code/test.db" → downloads/runs the @executeautomation/database-server package and points it at the SQLite file C:\Claude Code\test.db.
+Output confirms: “Added stdio MCP server sqlite … File modified: ….claude.json” → it’s registered as a stdio server and the config file was updated.
+
+2. Add the Filesystem MCP server
+claude mcp add filesystem --scope user -- npx -y @modelcontextprotocol/server-filesystem "C:/Claude Code"
+Registers a second MCP server named filesystem (also user-scope).
+Runs the official @modelcontextprotocol/server-filesystem package, restricting it to the folder C:\Claude Code — so Claude can read/write files only inside that directory (sandbox).
+
+3. List and health-check MCP servers
+claude mcp list
+Output shows four servers and their state:
+
+Server	Transport / URL	Status
+claude.ai Gmail	https://gmail.mcp.claude.com/mcp	Needs authentication
+claude.ai Google Calendar	https://gcal.mcp.claude.com/mcp	Needs authentication
+sqlite	npx -y @executeautomation/database-server C:/Claude Code/test.db	Connected ✓
+filesystem	npx -y @modelcontextprotocol/server-filesystem C:/Claude Code	Connected ✓
+So after these commands, Claude Code can:
+
+Query the SQLite DB at C:\Claude Code\test.db (run SELECT/INSERT/etc. via the MCP tool).
+Read/write files inside C:\Claude Code via the filesystem MCP.
+Gmail and Google Calendar are listed but still need you to sign in before they’re usable.
+Net effect: two new local MCP tools were plugged into Claude and are healthy.
