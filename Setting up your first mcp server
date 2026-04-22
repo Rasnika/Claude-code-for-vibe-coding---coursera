@@ -40,3 +40,8 @@ Query the SQLite DB at C:\Claude Code\test.db (run SELECT/INSERT/etc. via the MC
 Read/write files inside C:\Claude Code via the filesystem MCP.
 Gmail and Google Calendar are listed but still need you to sign in before they’re usable.
 Net effect: two new local MCP tools were plugged into Claude and are healthy.
+
+
+
+
+4)claude mcp add playwright --scope user -- npx -y @playwright/mcp@latest --headed
