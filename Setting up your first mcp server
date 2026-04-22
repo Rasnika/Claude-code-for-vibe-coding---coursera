@@ -1,0 +1,10 @@
+1)sqlite mcp server:
+
+claude mcp add sqlite --scope user -- npx -y @executeautomation/database-server "C:/Claude Code/test.db"
+
+Notes:
+
+The -- separates Claude's own flags from the command it should run (npx ...).
+Quote the DB path because it contains a space (Claude Code).
+If you actually meant the standard package, it's usually @executeautomation/database-server (as shown). Make sure Node.js/npx is installed and on PATH.
+If sqlite/the DB file doesn't exist yet at C:\Claude Code\test.db, create the folder/file first or point it at an existing .db.
